@@ -2,6 +2,7 @@ package goinsta
 
 import (
 	"encoding/json"
+	"fmt"
 	"strings"
 )
 
@@ -77,7 +78,7 @@ func (challenge *Challenge) selectVerifyMethod(choice string, isReplay ...bool) 
 	}
 
 	data, err := insta.prepareData(map[string]interface{}{
-		"choice":    choice,
+		"choice":    1,
 		"guid":      insta.uuid,
 		"device_id": insta.dID,
 	})
@@ -126,6 +127,7 @@ func (challenge *Challenge) SendSecurityCode(code string) error {
 	)
 	if err == nil {
 		resp := challengeResp{}
+		fmt.Println(resp)
 		err = json.Unmarshal(body, &resp)
 		if err == nil {
 			*challenge = *resp.Challenge
