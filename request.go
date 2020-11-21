@@ -35,9 +35,20 @@ type reqOptions struct {
 	//
 	// This parameters are independents of the request method (POST|GET)
 	Query map[string]string
+
+	//to obtain unloged info
+	UseInsta bool
 }
 
 func (insta *Instagram) sendSimpleRequest(uri string, a ...interface{}) (body []byte, err error) {
+	if insta.user == "" {
+		return insta.sendRequest(
+			&reqOptions{
+				Endpoint: fmt.Sprintf(uri, a...),
+				UseInsta: true,
+			},
+		)
+	}
 	return insta.sendRequest(
 		&reqOptions{
 			Endpoint: fmt.Sprintf(uri, a...),
@@ -57,6 +68,10 @@ func (insta *Instagram) sendRequest(o *reqOptions) (body []byte, err error) {
 	nu := goInstaAPIUrl
 	if o.UseV2 {
 		nu = goInstaAPIUrlv2
+	}
+
+	if o.UseInsta {
+		nu = urlUnlogedURL
 	}
 
 	u, err := url.Parse(nu + o.Endpoint)
