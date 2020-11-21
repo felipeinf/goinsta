@@ -179,6 +179,7 @@ type User struct {
 	FbPageCallToActionID         string       `json:"fb_page_call_to_action_id"`
 	Zip                          string       `json:"zip"`
 	Friendship                   Friendship   `json:"friendship_status"`
+	feedMedia                    *FeedMedia
 }
 
 // SetInstagram will update instagram instance for selected User.
@@ -487,6 +488,11 @@ func (user *User) FriendShip() error {
 func (user *User) Feed(params ...interface{}) *FeedMedia {
 	insta := user.inst
 
+	if user.feedMedia != nil {
+		user.feedMedia.inst = insta
+		user.feedMedia.uid = user.ID
+		return user.feedMedia
+	}
 	media := &FeedMedia{}
 	media.inst = insta
 	media.endpoint = urlUserFeed
