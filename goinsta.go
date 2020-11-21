@@ -140,6 +140,30 @@ func New(username, password string) *Instagram {
 	return inst
 }
 
+// New creates Instagram structure Unloged
+func NewUnloged() *Instagram {
+	// this call never returns error
+	jar, _ := cookiejar.New(nil)
+	inst := &Instagram{
+		user: "",
+		pass: "",
+		dID: generateDeviceID(
+			generateMD5Hash("" + ""),
+		),
+		uuid: generateUUID(), // both uuid must be differents
+		pid:  generateUUID(),
+		c: &http.Client{
+			Transport: &http.Transport{
+				Proxy: http.ProxyFromEnvironment,
+			},
+			Jar: jar,
+		},
+	}
+	inst.init()
+
+	return inst
+}
+
 func (inst *Instagram) init() {
 	inst.Challenge = newChallenge(inst)
 	inst.Profiles = newProfiles(inst)
