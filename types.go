@@ -371,3 +371,213 @@ type ErrChallengeProcess struct {
 func (ec ErrChallengeProcess) Error() string {
 	return ec.StepName
 }
+
+type UnlogedData struct {
+	Graphql struct {
+		User struct {
+			inst       *Instagram
+			Biography  string `json:"biography"`
+			FollowedBy struct {
+				Count int `json:"count"`
+			} `json:"edge_followed_by"`
+			Follow struct {
+				Count int `json:"count"`
+			} `json:"edge_follow"`
+			FullName           string `json:"full_name"`
+			HighlightReelCount int    `json:"highlight_reel_count"`
+			ID                 string `json:"id"`
+			IsPrivate          bool   `json:"is_private"`
+			IsVerified         bool   `json:"is_verified"`
+			ProfilePicURL      string `json:"profile_pic_url"`
+			ProfilePicURLHd    string `json:"profile_pic_url_hd"`
+			Username           string `json:"username"`
+			IGTv               struct {
+				Count    int `json:"count"`
+				PageInfo struct {
+					HasNextPage bool        `json:"has_next_page"`
+					EndCursor   interface{} `json:"end_cursor"`
+				} `json:"page_info"`
+				Edges []struct {
+					Node struct {
+						Typename   string `json:"__typename"`
+						ID         string `json:"id"`
+						Code       string `json:"shortcode"`
+						Dimensions struct {
+							Height int `json:"height"`
+							Width  int `json:"width"`
+						} `json:"dimensions"`
+						DisplayURL            string `json:"display_url"`
+						EdgeMediaToTaggedUser struct {
+							Edges []interface{} `json:"edges"`
+						} `json:"edge_media_to_tagged_user"`
+						MediaPreview string `json:"media_preview"`
+						Owner        struct {
+							ID       string `json:"id"`
+							Username string `json:"username"`
+						} `json:"owner"`
+						IsVideo        bool   `json:"is_video"`
+						HasAudio       bool   `json:"has_audio"`
+						TrackingToken  string `json:"tracking_token"`
+						VideoURL       string `json:"video_url"`
+						VideoViewCount int    `json:"video_view_count"`
+						Comments       struct {
+							Count int `json:"count"`
+						} `json:"edge_media_to_comment"`
+						CommentsDisabled bool `json:"comments_disabled"`
+						Likes            int  `json:"taken_at_timestamp"`
+						EdgeLikedBy      struct {
+							Count int `json:"count"`
+						} `json:"edge_liked_by"`
+						EdgeMediaPreviewLike struct {
+							Count int `json:"count"`
+						} `json:"edge_media_preview_like"`
+						Location           interface{} `json:"location"`
+						ThumbnailSrc       string      `json:"thumbnail_src"`
+						ThumbnailResources []struct {
+							Src          string `json:"src"`
+							ConfigWidth  int    `json:"config_width"`
+							ConfigHeight int    `json:"config_height"`
+						} `json:"thumbnail_resources"`
+
+						IsPublished   bool    `json:"is_published"`
+						ProductType   string  `json:"product_type"`
+						Title         string  `json:"title"`
+						VideoDuration float64 `json:"video_duration"`
+					} `json:"node"`
+				} `json:"edges"`
+			} `json:"edge_felix_video_timeline"`
+			Publications struct {
+				Count    int `json:"count"`
+				PageInfo struct {
+					HasNextPage bool   `json:"has_next_page"`
+					EndCursor   string `json:"end_cursor"`
+				} `json:"page_info"`
+				Edges []struct {
+					Node struct {
+						Typename   string `json:"__typename"`
+						ID         string `json:"id"`
+						Shortcode  string `json:"shortcode"`
+						Dimensions struct {
+							Height int `json:"height"`
+							Width  int `json:"width"`
+						} `json:"dimensions"`
+						DisplayURL string `json:"display_url"`
+						Tags       struct {
+							Edges []struct {
+								Node struct {
+									User struct {
+										FullName      string `json:"full_name"`
+										ID            string `json:"id"`
+										IsVerified    bool   `json:"is_verified"`
+										ProfilePicURL string `json:"profile_pic_url"`
+										Username      string `json:"username"`
+									} `json:"user"`
+									X float64 `json:"x"`
+									Y float64 `json:"y"`
+								} `json:"node"`
+							} `json:"edges"`
+						} `json:"edge_media_to_tagged_user"`
+						Owner struct {
+							ID       string `json:"id"`
+							Username string `json:"username"`
+						} `json:"owner"`
+						IsVideo              bool   `json:"is_video"`
+						AccessibilityCaption string `json:"accessibility_caption"`
+						DashInfo             struct {
+							IsDashEligible    bool   `json:"is_dash_eligible"`
+							VideoDashManifest string `json:"video_dash_manifest"`
+							NumberOfQualities int    `json:"number_of_qualities"`
+						} `json:"dash_info"`
+						HasAudio       bool    `json:"has_audio"`
+						TrackingToken  string  `json:"tracking_token"`
+						VideoURL       string  `json:"video_url"`
+						VideoViewCount float64 `json:"video_view_count"`
+						Caption        struct {
+							Edges []struct {
+								Node struct {
+									Text string `json:"text"`
+								} `json:"node"`
+							} `json:"edges"`
+						} `json:"edge_media_to_caption"`
+						Comments struct {
+							Count int `json:"count"`
+						} `json:"edge_media_to_comment"`
+						CommentsDisabled bool  `json:"comments_disabled"`
+						TakenAtTimestamp int64 `json:"taken_at_timestamp"`
+						Likes            struct {
+							Count int `json:"count"`
+						} `json:"edge_liked_by"`
+						EdgeMediaPreviewLike struct {
+							Count int `json:"count"`
+						} `json:"edge_media_preview_like"`
+						Location struct {
+							ID            string `json:"id"`
+							HasPublicPage bool   `json:"has_public_page"`
+							Name          string `json:"name"`
+							Slug          string `json:"slug"`
+						} `json:"location"`
+						ThumbnailSrc       string `json:"thumbnail_src"`
+						ThumbnailResources []struct {
+							Src          string `json:"src"`
+							ConfigWidth  int    `json:"config_width"`
+							ConfigHeight int    `json:"config_height"`
+						} `json:"thumbnail_resources"`
+						Carrousel struct {
+							Edges []struct {
+								Node struct {
+									Typename   string `json:"__typename"`
+									ID         string `json:"id"`
+									Shortcode  string `json:"shortcode"`
+									Dimensions struct {
+										Height int `json:"height"`
+										Width  int `json:"width"`
+									} `json:"dimensions"`
+									DisplayURL string `json:"display_url"`
+									Tags       struct {
+										Edges []struct {
+											Node struct {
+												User struct {
+													FullName      string `json:"full_name"`
+													ID            string `json:"id"`
+													IsVerified    bool   `json:"is_verified"`
+													ProfilePicURL string `json:"profile_pic_url"`
+													Username      string `json:"username"`
+												} `json:"user"`
+												X float64 `json:"x"`
+												Y float64 `json:"y"`
+											} `json:"node"`
+										} `json:"edges"`
+									} `json:"edge_media_to_tagged_user"`
+									FactCheckOverallRating interface{} `json:"fact_check_overall_rating"`
+									FactCheckInformation   interface{} `json:"fact_check_information"`
+									GatingInfo             interface{} `json:"gating_info"`
+									SharingFrictionInfo    struct {
+										ShouldHaveSharingFriction bool        `json:"should_have_sharing_friction"`
+										BloksAppURL               interface{} `json:"bloks_app_url"`
+									} `json:"sharing_friction_info"`
+									MediaOverlayInfo interface{} `json:"media_overlay_info"`
+									MediaPreview     string      `json:"media_preview"`
+									Owner            struct {
+										ID       string `json:"id"`
+										Username string `json:"username"`
+									} `json:"owner"`
+									IsVideo              bool   `json:"is_video"`
+									AccessibilityCaption string `json:"accessibility_caption"`
+									DashInfo             struct {
+										IsDashEligible    bool   `json:"is_dash_eligible"`
+										VideoDashManifest string `json:"video_dash_manifest"`
+										NumberOfQualities int    `json:"number_of_qualities"`
+									} `json:"dash_info"`
+									HasAudio       bool    `json:"has_audio"`
+									TrackingToken  string  `json:"tracking_token"`
+									VideoURL       string  `json:"video_url"`
+									VideoViewCount float64 `json:"video_view_count"`
+								} `json:"node"`
+							} `json:"edges"`
+						} `json:"edge_sidecar_to_children"`
+					} `json:"node,omitempty"`
+				} `json:"edges"`
+			} `json:"edge_owner_to_timeline_media"`
+		} `json:"user"`
+	} `json:"graphql"`
+}
