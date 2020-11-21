@@ -850,6 +850,9 @@ func (media *FeedMedia) Sync() error {
 	id := media.ID()
 	insta := media.inst
 
+	if insta.user == "" {
+		return nil
+	}
 	data, err := insta.prepareData(
 		map[string]interface{}{
 			"media_id": id,
